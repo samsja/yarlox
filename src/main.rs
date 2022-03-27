@@ -1,3 +1,7 @@
+mod scanner;
+mod token;
+
+use scanner::scan_source;
 use std::env;
 use std::fs::File;
 use std::io;
@@ -42,6 +46,7 @@ fn run_prompt() {
 
 fn run(source: &String) {
     println!("run {}", source);
+    scan_source(source);
 }
 
 fn error(line: usize, message: &String) {
