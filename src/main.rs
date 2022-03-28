@@ -1,5 +1,6 @@
 mod scanner;
 mod token;
+mod error;
 
 use scanner::scan_source;
 use std::env;
@@ -45,14 +46,7 @@ fn run_prompt() {
 }
 
 fn run(source: &String) {
-    println!("run {}", source);
-    scan_source(source);
+    println!("run {source}");
+    println!("{:?}", scan_source(source));
 }
 
-fn error(line: usize, message: &String) {
-    report(line, &"".to_string(), &message);
-}
-
-fn report(line: usize, _where: &String, message: &String) {
-    println!("[line {}] Error {} : {}", line, _where, message);
-}
